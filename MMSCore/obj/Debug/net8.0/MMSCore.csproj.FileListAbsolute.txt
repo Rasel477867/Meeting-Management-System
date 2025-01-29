@@ -1,0 +1,11 @@
+D:\Meeting Room Management System\Meeting Management System\MMSCore\bin\Debug\net8.0\MMSCore.deps.json
+D:\Meeting Room Management System\Meeting Management System\MMSCore\bin\Debug\net8.0\MMSCore.dll
+D:\Meeting Room Management System\Meeting Management System\MMSCore\bin\Debug\net8.0\MMSCore.pdb
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.AssemblyInfoInputs.cache
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.AssemblyInfo.cs
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.csproj.CoreCompileInputs.cache
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.dll
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\refint\MMSCore.dll
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.pdb
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\ref\MMSCore.dll

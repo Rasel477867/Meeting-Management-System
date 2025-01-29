@@ -1,0 +1,15 @@
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\bin\Debug\net8.0\MMSRepository.deps.json
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\bin\Debug\net8.0\MMSRepository.dll
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\bin\Debug\net8.0\MMSRepository.pdb
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\bin\Debug\net8.0\MMSCore.dll
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\bin\Debug\net8.0\MMSCore.pdb
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.csproj.AssemblyReference.cache
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.AssemblyInfoInputs.cache
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.AssemblyInfo.cs
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.csproj.CoreCompileInputs.cache
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.csproj.CopyComplete
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.dll
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\refint\MMSRepository.dll
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.pdb
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\ref\MMSRepository.dll

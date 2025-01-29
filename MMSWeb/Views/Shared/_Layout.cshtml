@@ -1,0 +1,180 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="icon" type="image/png" sizes="16x16" href="~/images/graerp-favicon.png">
+
+
+    <!-- Font styles -->
+    <link href="~/themeCSS/fonts/feather/style.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/fonts/flag-icon-css/css/flag-icon.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/fonts/meteocons/style.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/fonts/simple-line-icons/style.min.css" rel="stylesheet" />
+    <!-- /font styles -->
+    <!-- Theme Styles -->
+    <link href="~/themeCSS/style.css" rel="stylesheet" />
+    @*<link href="~/themeCSS/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/themeCSS/css/bootstrap-extended.min.css" rel="stylesheet">*@
+    <link href="~/themeCSS/css/colors.min.css" rel="stylesheet">
+    <link href="~/themeCSS/css/components.min.css" rel="stylesheet">
+    <link href="~/themeCSS/css/vendors.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/css/core/menu/menu-types/vertical-menu-modern.css" rel="stylesheet" />
+    <link href="~/themeCSS/css/core/colors/palette-gradient.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/css/pages/timeline.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/css/app.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/vendors/css/forms/selects/select2.css" rel="stylesheet" />
+    <!-- /theme Styles -->
+    <!-- Chart style -->
+    <link href="~/themeCSS/css/pages/card-statistics.min.css" rel="stylesheet">
+    <link href="~/themeCSS/css/pages/vertical-timeline.min.css" rel="stylesheet">
+    <!-- /char style -->
+
+    <link href="~/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/themeCSS/css/toastr.css" rel="stylesheet" />
+    <link href="~/themeCSS/css/toastr.min.css" rel="stylesheet" />
+
+    <link href="~/css/site.css" rel="stylesheet" />
+
+
+    @RenderSection("Styles", required: false)
+</head>
+<body class="vertical-layout vertical-menu-modern 2-columns   menu-expanded fixed-navbar"
+      data-open="click" data-menu="vertical-menu-modern" data-col="2-columns">
+    <!-- Header partial -->
+    @* <partial name="_SidebarPartial" model="currentUser" />
+    <partial name="_HeaderPartial" model="currentUser" /> *@
+    <partial name="_HeadderPartial" />
+    <!-- /header partial -->
+    <!-- Sidebar partial -->
+    <partial name="_SidebarPartial" />
+    <!-- /sidebar partial -->
+    @RenderBody()
+
+    <!-- Footer partial -->
+    <partial name="_FooterPartial" />
+    <!-- /footer partial -->
+    <!-- Core JS files -->
+    <script src="~/js/jquery-3.6.0.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script src="~/themeJS/vendors/js/vendors.min.js"></script>
+    <script src="~/themeJS/vendors/js/extensions/unslider-min.js"></script>
+    <script src="~/themeJS/vendors/js/timeline/horizontal-timeline.js"></script>
+    <script src="~/themeJS/js/core/app-menu.js"></script>
+    <script src="~/themeJS/js/core/app.js"></script>
+    <script src="~/themeJS/js/scripts/customizer.js"></script>
+    <script src="~/themeJS/vendors/js/forms/select/select2.js"></script>
+
+
+    <script src="~/js/bootstrap-datepicker.js"></script>
+    <script src="~/themeJS/toastr.min.js"></script>
+
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+
+    @RenderSection("Scripts", required: false)
+    @if (TempData["ErrorNotify"] != null)
+    {
+        <script>
+            toastr.error('@TempData["ErrorNotify"]');
+
+        </script>
+    }
+    @if (TempData["SuccessNotify"] != null)
+    {
+        <script>
+            toastr.success('@TempData["SuccessNotify"]');
+
+        </script>
+    }
+    @if (TempData["InfoNotify"] != null)
+    {
+        <script>
+            toastr.info('@TempData["InfoNotify"]');
+        </script>
+    }
+
+    <!--menu active-->
+    <script type="text/javascript">
+
+        $(function ($) {
+            let url = window.location.href;
+            $('li a').each(function () {
+                if (this.href === url) {
+                    $(this).closest('li').addClass('active');
+                }
+            });
+        });
+
+        $('.select2').select2();
+    </script>
+
+</body>
+</html>
+
+<style>
+    #containerTable {
+        width: 100% !important;
+        table-layout: auto !important;
+        white-space: nowrap;
+    }
+
+        /* Header alignment: center */
+        #containerTable thead th {
+            background-color: #f8f9fa;
+            text-align: center; /* Header Center Align */
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        /* Data cells left alignment */
+        #containerTable tbody td {
+            padding: 10px;
+            text-align: left !important; /* Data Cells Left Align */
+            vertical-align: middle;
+        }
+
+    /* Pagination button styles */
+    .dataTables_paginate .paginate_button {
+        margin: 2px;
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: 1px solid #007bff;
+        background-color: #007bff;
+        color: white !important;
+    }
+
+        /* Current pagination button color */
+        .dataTables_paginate .paginate_button.current {
+            background-color: #0056b3 !important;
+            color: green !important;
+        }
+
+        /* Pagination button hover effect */
+        .dataTables_paginate .paginate_button:hover {
+            background-color: #004080 !important;
+            color: white !important;
+        }
+
+        /* Disable white color after clicking */
+        .dataTables_paginate .paginate_button:active {
+            background-color: #004080 !important;
+            color: white !important;
+        }
+
+    /* Responsive table overflow */
+    .table-responsive {
+        overflow-x: auto;
+    }
+</style>
+
+
+

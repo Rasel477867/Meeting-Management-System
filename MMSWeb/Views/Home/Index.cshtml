@@ -1,0 +1,377 @@
+﻿
+@{
+    ViewBag.Title = "Dashboard";
+}
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="breadcrumb d-none">
+                <a href="/Home">Home</a> &gt;
+                <span id="breadcrumbTitle" style="display:none;">Ambulatory Care</span>
+            </div>
+            <div class="header-title" id="headerTitle" style="display:none;">
+                <h2 style="text-align:center;">Ambulatory Care</h2>
+            </div>
+        </div>
+        <div class="content-body">
+
+            <div class="row" id="iconContainer">
+
+                <div class="col-md-2 icon-container">
+                    <i class="icon-users"></i>
+                    <span class="icon-label">Ambulatory Care</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-credit-card"></i>
+                    <span class="icon-label">Finance</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-bed"></i>
+                    <span class="icon-label">Inpatient</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-cogs"></i>
+                    <span class="icon-label">Maintenance</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-medkit"></i>
+                    <span class="icon-label">Pharmacy</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="icon-wallet"></i>
+                    <span class="icon-label">Budget</span>
+                </div>
+
+                <!-- Second Row -->
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-archive"></i>
+                    <span class="icon-label">Fixed Assets</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="icon-layers"></i>
+                    <span class="icon-label">Inventory</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-cut"></i>
+                    <span class="icon-label">OT</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="icon-label">Procurement</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-industry"></i>
+                    <span class="icon-label">CSSD</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-group"></i>
+                    <span class="icon-label">HR</span>
+                </div>
+
+                <!-- Third Row -->
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-hourglass"></i>
+                    <span class="icon-label">Laboratory</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-heart"></i>
+                    <span class="icon-label">Patient Care</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-image"></i>
+                    <span class="icon-label">RIS</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-cutlery"></i>
+                    <span class="icon-label">Dietary</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-money"></i>
+                    <span class="icon-label">Accounts</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-gift"></i>
+                    <span class="icon-label">Linen</span>
+                </div>
+
+                <!-- Fourth Row -->
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-stethoscope"></i>
+                    <span class="icon-label">Patient Services</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-user-md"></i>
+                    <span class="icon-label">Services</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-exclamation-triangle"></i>
+                    <span class="icon-label">Emergency</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="icon-basket"></i>
+                    <span class="icon-label">House Keeping</span>
+                </div>
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-clipboard"></i>
+                    <span class="icon-label">MRD</span>
+                </div>
+
+                <div class="col-md-2 icon-container">
+                    <i class="fa fa-briefcase"></i>
+                    <span class="icon-label">Payroll</span>
+                </div>
+
+
+
+               
+
+            </div>
+
+            <!-- New Section for Additional Icons -->
+            <div class="row" id="ambulatoryIcons" style="display:none;">
+                <div class="col-md-4 icon-container-small">
+                    <i class="fa fa-user-plus"></i>
+                    <span class="icon-label">Pre-Registration</span>
+                </div>
+                <div class="col-md-4 icon-container-small">
+                    <i class="fa fa-user-plus"></i>
+                    <span class="icon-label">Registration</span>
+                </div>
+                <div class="col-md-4 icon-container-small">
+                    <i class="fa fa-user-md"></i>
+                    <span class="icon-label">Doctor Appointment</span>
+                </div>
+                <div class="col-md-4 icon-container-small">
+                    <i class="fa fa-user-plus"></i>
+                    <span class="icon-label">Patient Appointment</span>
+                </div>
+                <div class="col-md-4 icon-container-small">
+                    <i class="fa fa-user-plus"></i>
+                    <span class="icon-label">Invoice</span>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .content-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .breadcrumb {
+        flex: 1;
+    }
+
+    .header-title {
+        margin-right: 45%;
+        text-align: center;
+    }
+
+        .header-title h2 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #6c757d;
+            font-weight: bold;
+        }
+
+    .icon-container-small {
+        flex: 0 1 calc(20% - 10px);
+        text-align: center;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #00a5a8;
+        box-sizing: border-box;
+    }
+
+        .icon-container-small:hover {
+            background-color: #e0e0e0;
+        }
+
+        .icon-container-small i {
+            font-size: 1.2em;
+            color: #6c757d;
+        }
+
+
+
+
+    .icon-label {
+        display: block;
+        margin-top: 5px;
+        font-size: 1em;
+        color: #6c757d;
+    }
+
+    .icon-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 20px 0;
+    }
+
+    .icon-container {
+        flex: 0 1 calc(16.66% - 10px);
+        text-align: center;
+        margin: 5px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        transition: all 0.3s ease-in-out;
+        box-sizing: border-box;
+    }
+
+        .icon-container:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #f0f0f0;
+        }
+
+        .icon-container i {
+            font-size: 3.3em;
+            color: #6c757d;
+        }
+
+    .icon-label {
+        display: block;
+        margin-top: 10px;
+        font-size: 1.3em;
+        color: #6c757d;
+    }
+
+</style>
+
+@section Scripts
+{
+    <script src="~/js/echarts/echarts.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+            monthlyChartInit();
+
+        });
+
+        function monthlyChartInit() {
+            if (typeof echarts == 'undefined') {
+                console.warn('Warning - echarts.min.js is not loaded.');
+                return;
+            }
+            var dom = document.getElementById("monthlyChart");
+            var myChart = echarts.init(dom);
+            option = null;
+            option = {
+
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    }
+                },
+                legend: {
+                    top: 5,
+                    textStyle: {
+                        fontSize: 12,
+                    },
+                    itemHeight: 12,
+                },
+                grid: {
+                    left: '3%',
+                    right: '4%',
+                    bottom: '3%',
+                    containLabel: true
+                },
+                //title: {
+                //    text: 'Yearly Report',
+                //    subtext: '',
+                //    left: 'center',
+                //    textStyle: {
+                //        fontSize: 16,
+                //        fontWeight: 'bold'
+                //    },
+                //    x: 'center'
+                //},
+                xAxis: [
+                    {
+                        type: 'category',
+                        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                        axisLabel: {
+                            fontSize: 12,
+                            //fontStyle: 'bold',
+                            margin: 15,
+                            formatter: function (val) {
+                                return formatSpace(val);
+                            }
+                        },
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: 'value'
+                    }
+                ],
+                series: [
+                    {
+                        name: 'Ambulatory Care',
+                        type: 'bar',
+                        stack: 'HMS',
+                        barWidth: 35,
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [620, 732, 701, 734, 1090, 1130, 1120, 120, 132, 101, 134, 290]
+                    },
+                    {
+                        name: 'Patient Care',
+                        type: 'bar',
+                        stack: 'HMS',
+                        emphasis: {
+                            focus: 'series'
+                        },
+                        data: [160, 272, 471, 574, 390, 630, 810, 362, 182, 591, 284, 409]
+                    }
+                ]
+            };
+            if (option && typeof option === "object") {
+                myChart.setOption(option, true);
+            }
+        }
+
+        function formatSpace(val) {
+            var strs = val.split(' ').join('\n') //Convert to string array
+            return strs;
+        };
+
+        $(document).ready(function () {
+            $('.icon-container:has(.icon-users)').on('click', function () {
+                $('#iconContainer').hide();
+                $('#headerTitle').show();
+                $('.breadcrumb').removeClass('d-none');
+                $('#ambulatoryIcons').show();
+                $('#breadcrumbTitle').show();
+            });
+
+            $('#homeButton').on('click', function () {
+                $('#iconContainer').show();
+                $('#headerTitle').hide();
+                $('.breadcrumb').addClass('d-none');
+                $('#ambulatoryIcons').hide();
+                $('#breadcrumbTitle').hide();
+            });
+        });
+
+
+    </script>
+}
+
+
+
+

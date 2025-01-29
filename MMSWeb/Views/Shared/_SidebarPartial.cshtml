@@ -1,0 +1,64 @@
+﻿@using MMSWeb.Models
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Identity
+
+<div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
+    <div class="main-menu-content">
+        <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
+            <li class="nav-item">
+                <a href="@Url.Action("Index","Home", new { area = "" })"><i class="fa fa-home"></i><span class="menu-title">Dashboard</span></a>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ft-bookmark"></i><span class="menu-title">Pharmacy Transaction</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="Purchase">Purchase Queue </a>
+                    </li>
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ft-bookmark"></i><span class="menu-title">Pharamcy Master</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="Medicine">Medicine</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-controller="Registration" asp-action="Index" asp-area="ACARE">Registration</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-controller="DoctorRegistration" asp-action="Index" asp-area="ACARE">Doctor Registration</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-controller="DoctorAppointment" asp-action="Add" asp-area="ACARE">Doctor Appointment</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-controller="Invoice" asp-action="Add" asp-area="ACARE">Invoice</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#"><i class="ft-bookmark"></i><span class="menu-title">Pharmacy Configuration</span></a>
+                <ul class="menu-content">
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="DrugGeneric">Drug Generic </a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="PackagingType">Packaging Type </a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="Company">Medicine Company</a>
+                    </li>
+                    <li>
+                        <a class="menu-item" asp-action="Index" asp-controller="Company">Medicine </a>
+                    </li>
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
