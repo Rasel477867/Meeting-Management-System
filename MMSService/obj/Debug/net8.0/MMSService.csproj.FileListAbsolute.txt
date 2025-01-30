@@ -15,3 +15,6 @@ D:\Meeting Room Management System\Meeting Management System\MMSService\obj\Debug
 D:\Meeting Room Management System\Meeting Management System\MMSService\obj\Debug\net8.0\refint\MMSService.dll
 D:\Meeting Room Management System\Meeting Management System\MMSService\obj\Debug\net8.0\MMSService.pdb
 D:\Meeting Room Management System\Meeting Management System\MMSService\obj\Debug\net8.0\ref\MMSService.dll
+D:\Meeting Room Management System\Meeting Management System\MMSService\bin\Debug\net8.0\MMSService.runtimeconfig.json
+D:\Meeting Room Management System\Meeting Management System\MMSService\obj\Debug\net8.0\MMSService.sourcelink.json
+D:\Meeting Room Management System\Meeting Management System\MMSService\obj\Debug\net8.0\MMSService.genruntimeconfig.cache

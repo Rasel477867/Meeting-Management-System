@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMSService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+45f02dc5d0ef361c291326145a8e73c5a136ccf7")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMSService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMSService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
