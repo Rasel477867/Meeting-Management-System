@@ -13,3 +13,6 @@ D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\De
 D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\refint\MMSRepository.dll
 D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.pdb
 D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\ref\MMSRepository.dll
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\bin\Debug\net8.0\MMSRepository.runtimeconfig.json
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.sourcelink.json
+D:\Meeting Room Management System\Meeting Management System\MMSRepository\obj\Debug\net8.0\MMSRepository.genruntimeconfig.cache

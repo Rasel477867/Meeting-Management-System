@@ -9,3 +9,7 @@ D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\ne
 D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\refint\MMSCore.dll
 D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.pdb
 D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\ref\MMSCore.dll
+D:\Meeting Room Management System\Meeting Management System\MMSCore\bin\Debug\net8.0\MMSCore.runtimeconfig.json
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.csproj.AssemblyReference.cache
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.sourcelink.json
+D:\Meeting Room Management System\Meeting Management System\MMSCore\obj\Debug\net8.0\MMSCore.genruntimeconfig.cache
