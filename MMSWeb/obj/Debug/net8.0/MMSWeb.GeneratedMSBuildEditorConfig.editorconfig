@@ -42,6 +42,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QnVuZGxlXF9Td2VldEFsZXJ0U2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Meeting Room Management System/Meeting Management System/MMSWeb/Views/Booking/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va2luZ1xBZGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Meeting Room Management System/Meeting Management System/MMSWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

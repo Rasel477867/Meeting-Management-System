@@ -4,6 +4,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MMSRepository.Data;
+using MMSRepository.Contacts;
+using MMSRepository;
+using MMSService.Contact;
+using MMSService;
 
 namespace MMSWeb
 {
@@ -31,23 +35,24 @@ namespace MMSWeb
             //services.AddIdentity<Appuser, IdentityRole>()
             //        .AddEntityFrameworkStores<ApplicationDbContext>()
             //        .AddDefaultTokenProviders();
-            services.ConfigureApplicationCookie(options =>
-            {
-                options.AccessDeniedPath = "/Account/AccessDenied";
-                options.Cookie.Name = "YourAppCookieName";
-                options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-                options.LoginPath = "/Account/Login";
-                // ReturnUrlParameter requires 
-                //using Microsoft.AspNetCore.Authentication.Cookies;
-                options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
-                options.SlidingExpiration = true;
-            });
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.AccessDeniedPath = "/Account/AccessDenied";
+            //    options.Cookie.Name = "YourAppCookieName";
+            //    options.Cookie.HttpOnly = true;
+            //    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+            //    options.LoginPath = "/Account/Login";
+            //    // ReturnUrlParameter requires 
+            //    //using Microsoft.AspNetCore.Authentication.Cookies;
+            //    options.ReturnUrlParameter = CookieAuthenticationDefaults.ReturnUrlParameter;
+            //    options.SlidingExpiration = true;
+            //});
 
 
             // All Depedency inject here
-           
 
+            services.AddTransient<IBookingUnitOfWork, BookingUnitOfWork>();
+            services.AddTransient<IBookingService, BookingService>();
 
         }
 

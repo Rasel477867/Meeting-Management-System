@@ -16,7 +16,8 @@ namespace MMSRepository.Contacts.Core
         }
         public async Task<bool> CompleteAsync()
         {
-            return await _dbcontext.SaveChangesAsync() > 0;
+            var sta= await _dbcontext.SaveChangesAsync() > 0;
+            return sta;
         }
     }
 }

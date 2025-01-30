@@ -1,0 +1,144 @@
+﻿@using MMSWeb.Models
+@model BookingModel
+@{
+    ViewBag.Title = "Add";
+
+}
+
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-body">
+            <div class="row" id="default">
+                <div class="col-12">
+                    @using (Html.BeginForm("Add", "Booking", FormMethod.Post, new { @class = "form-horizontal", @id = "id" }))
+                    {
+                        <div class="card border-custom">
+                            <div class="card-header bg-primary">
+                                <h4 class="card-title"><i class="fa fa-clipboard"></i>New Booking Type </h4>
+                                <div class="heading-elements">
+                                    <a href="@Url.Action("Index","Booking")" class="btn btn-sm btn-success white"><i class="fa fa-list white"></i> Booking List</a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" />
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-md-4 mt-1">
+                                        <div class="form-group mt-1">
+                                            <label>Booking Name</label>
+                                            <input asp-for="Subject" type="text" class="form-control form-control-medium" placeholder="Enter Event Name">
+                                            <span class="text-danger" asp-validation-for="Subject"></span>
+                                        </div>
+                                        <div class="form-group mt-1">
+                                            <label class="required">Start Time:</label>
+                                            <input type="time" asp-for="StartTime" class="form-control form-control-medium" required>
+                                        </div>
+                                        <div class="form-group mt-1" id="endDate" style="display: none;">
+                                            <label asp-for="EndRepeatedDate"></label>
+                                            <div class="input-group">
+                                                <input type="date" asp-for="EndRepeatedDate" class="form-control form-control-medium bs-datepicker">
+                                            </div>
+                                            <span class="text-danger" asp-validation-for="EndRepeatedDate"></span>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-md-4 mt-1">
+
+                                        <div class="form-group mt-1">
+                                            <label asp-for="BookingDate"></label>
+                                            <div class="input-group">
+                                                <input type="date" asp-for="BookingDate" class="form-control form-control-medium bs-datepicker" )">
+                                            </div>
+                                            <span class="text-danger" asp-validation-for="BookingDate"></span>
+                                        </div>
+
+
+                                        <div class="form-group mt-1">
+                                            <label class="required">Ending Time:</label>
+                                            <input type="time" asp-for="EndTime" class="form-control form-control-medium" required>
+                                        </div>
+                                      
+
+                                    </div>
+                                    <div class="col-md-4 mt-1">
+                                        <div class="form-group mt-1">
+                                            <label>Booking Type</label>
+                                            <select asp-for="RepetitionOption" asp-items="@Model.SelectRepeatItems" class="form-control form-control-medium select2" id="repetitionOption">
+                                                <option value="">--Choose--</option>
+
+                                            </select>
+                                            <span class="text-danger" asp-validation-for="RepetitionOption"></span>
+                                        </div>
+                                        <div class="form-group mt-1">
+                                            <label>Host Name</label>
+                                            <input asp-for="Host" type="text" class="form-control form-control-medium" placeholder="Enter Host Name">
+                                            <span class="text-danger" asp-validation-for="Host"></span>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div id="daysCheckboxes" style="display: none;">
+                                        <label class="text-bold-300">Select Days (For Weekly Repeat):</label><br>
+                                        <input type="checkbox" name="SelectedDays" value="1"> Sunday
+                                        <input type="checkbox" name="SelectedDays" value="2"> Monday
+                                        <input type="checkbox" name="SelectedDays" value="4"> Tuesday
+                                        <input type="checkbox" name="SelectedDays" value="8"> Wednesday
+                                        <input type="checkbox" name="SelectedDays" value="16"> Thursday
+                                        <input type="checkbox" name="SelectedDays" value="32"> Friday
+                                        <input type="checkbox" name="SelectedDays" value="64"> Saturday
+
+                                    </div><br>
+
+
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between">
+                                    <a href="javascript:location.reload();" class="btn btn-light btn-medium text-white"> Cencel</a>
+                                    <button type="submit" asp-action="Add" asp-controller="Booking" class="btn btn-success btn-medium" id="submitButton"><i class="fa fa-save"></i> Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="~/Views/Shared/_ValidationScriptsPartial.cshtml" />
+
+    <script type="text/javascript">
+        // select2 load //
+        $(".select2").select2();
+        $(document).ready(function () {
+            // Show/Hide days checkboxes based on RepetitionOption
+            $("#repetitionOption").change(function () {
+                if ($(this).val() === "3") {
+                    $("#daysCheckboxes").show();
+                   
+                }
+                else {
+                    $("#daysCheckboxes").hide();
+                }
+                if ($(this).val() === "3" || $(this).val()=="2") {
+                    $("#endDate").show();
+
+                }
+                else {
+                    $("#endDate").hide();
+                }
+                
+            });
+
+            
+        });
+    </script>
+}
+
+
+
