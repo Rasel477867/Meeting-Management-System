@@ -40,6 +40,9 @@ namespace MMSRepository.Migrations
                     b.Property<TimeSpan>("EndTime")
                         .HasColumnType("time");
 
+                    b.Property<string>("Host")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("RepetitionOption")
                         .HasColumnType("int");
 
@@ -48,6 +51,9 @@ namespace MMSRepository.Migrations
 
                     b.Property<TimeSpan>("StartTime")
                         .HasColumnType("time");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

@@ -21,5 +21,7 @@ namespace MMSCore
         public DateTime? EndRepeatedDate { get; set; }
         public DaysofworkEnum? DaysToRepeatedOn { get; set; } // Multiple values store. So enum used by [Flags]
         public DateTime? RequestedOn { get; set; }
+        public string? Subject {  get; set; }
+        public string? Host {  get; set; }
     }
 }
