@@ -11,5 +11,6 @@ namespace MMSService.Contact
     {
         public Task<bool> IsBookingAvailableAsync(Booking booking);
         public Task<bool> AddAsync(Booking Entity);
+        Task<List<Booking>> GetBookingList();
     }
 }

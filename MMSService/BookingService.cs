@@ -24,6 +24,11 @@ namespace MMSService
            return await _unitOfWork.CompleteAsync();
         }
 
+        public Task<List<Booking>> GetBookingList()
+        {
+            return _unitOfWork.BookingRepository.GetBookingList();
+        }
+
         public async Task<bool> IsBookingAvailableAsync(Booking booking)
         {
             var existingBookings = _unitOfWork.BookingRepository.GetBookingListAsync();
