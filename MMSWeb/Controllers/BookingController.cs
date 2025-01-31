@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Autofac.Core;
+using Microsoft.AspNetCore.Mvc;
 using MMSCore;
 using MMSCore.Enum;
 using MMSWeb.Models;
@@ -7,9 +8,10 @@ namespace MMSWeb.Controllers
 {
     public class BookingController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var model = await Task.Run(() => new BookingModel());
+            return View(model);
         }
         public async Task<IActionResult> Add()
         {
@@ -48,5 +50,14 @@ namespace MMSWeb.Controllers
             }
             return RedirectToAction("Add");
         }
+        [HttpGet]
+        public async Task<IActionResult> GetBookings()
+        {
+            var events = await Task.Run(() => new BookingModel().BookingList());
+           
+
+            return Json(events); // Convert events list to JSON and return it to FullCalendar
+        }
+
     }
-}
+    }

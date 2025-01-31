@@ -1,4 +1,5 @@
-﻿using MMSCore;
+﻿using Microsoft.EntityFrameworkCore;
+using MMSCore;
 using MMSRepository.Contacts;
 using MMSRepository.Contacts.Core;
 using MMSRepository.Data;
@@ -16,6 +17,11 @@ namespace MMSRepository
         public BookingRepository(ApplicationDbContext db) : base(db)
         {
             _dbcontext = db;
+        }
+
+        public async Task<List<Booking>> GetBookingList()
+        {
+            return await _dbcontext.Bookings.ToListAsync();
         }
 
         public IQueryable<Booking> GetBookingListAsync()
