@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMSRepository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+87c68079ab4cc82eac84352c5aae5e25df4d6daa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9d22a7744c52a4488102d73a9d16510030e8efe")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMSRepository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMSRepository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
