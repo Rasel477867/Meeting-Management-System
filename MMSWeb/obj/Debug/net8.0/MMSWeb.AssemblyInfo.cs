@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MMSWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bcbb22c62bbf47188adf64914bb0843946e66c7d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef703926ad60824bf94c2814a4bc4aca35e8962b")]
 [assembly: System.Reflection.AssemblyProductAttribute("MMSWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MMSWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

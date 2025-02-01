@@ -40,8 +40,7 @@ namespace MMSService
                     x.BookingDate == booking.BookingDate &&
                     ((x.EndTime > booking.StartTime && x.EndTime < booking.EndTime) ||
                      (x.StartTime > booking.StartTime && x.StartTime < booking.EndTime) ||
-                     (x.StartTime==booking.StartTime && x.EndTime==booking.EndTime)||
-                    (x.StartTime<booking.StartTime && x.EndTime>booking.EndTime))); // Check exact same time
+                    (x.StartTime<=booking.StartTime && x.EndTime>=booking.EndTime))); // Check exact same time
                 if (state == false)
                 {
                     return false;
@@ -54,11 +53,7 @@ namespace MMSService
                             if (list[i].BookingDate<=booking.BookingDate && booking.BookingDate <= list[i].EndRepeatedDate)
                             {
 
-                                if (list[i].StartTime == booking.StartTime && list[i].EndTime == booking.EndTime)
-                                {
-                                    return false;
-                                }
-                                else if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
                                 {
                                     return false;
                                 }
@@ -66,12 +61,13 @@ namespace MMSService
                                 {
                                     return false;
                                 }
-                                else if (list[i].StartTime < booking.StartTime && list[i].EndTime > booking.EndTime)
+                                else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
                                 {
                                     return false;
                                 }
+
                             }
-                        
+
                         }
                         else if (list[i].RepetitionOption == RepeatOption.Weekly)
                         {
@@ -82,11 +78,7 @@ namespace MMSService
                                 var ans = ((int?)existday ?? 0) & (int)inputday;
                                 if (ans != 0)
                                 {
-                                    if (list[i].StartTime == booking.StartTime && list[i].EndTime == booking.EndTime)
-                                    {
-                                        return false;
-                                    }
-                                    else if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
                                     {
                                         return false;
                                     }
@@ -94,10 +86,11 @@ namespace MMSService
                                     {
                                         return false;
                                     }
-                                    else if (list[i].StartTime < booking.StartTime && list[i].EndTime > booking.EndTime)
+                                    else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
                                     {
                                         return false;
                                     }
+
                                 }
 
 
@@ -133,11 +126,7 @@ namespace MMSService
 
                             if (booking.BookingDate <= list[i].BookingDate && list[i].BookingDate <= booking.EndRepeatedDate)
                             {
-                                if (list[i].StartTime == booking.StartTime && list[i].EndTime == booking.EndTime)
-                                {
-                                    return false;
-                                }
-                                else if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
                                 {
                                     return false;
                                 }
@@ -145,16 +134,19 @@ namespace MMSService
                                 {
                                     return false;
                                 }
-                                else if (list[i].StartTime < booking.StartTime && list[i].EndTime > booking.EndTime)
+                                else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
                                 {
                                     return false;
                                 }
+
                             }
 
                         }// Daily case exist weekly option duplicate check
                         else if (list[i].RepetitionOption==RepeatOption.Weekly)
                         {
-                            if ((list[i].BookingDate<=booking.BookingDate && booking.BookingDate <= list[i].EndRepeatedDate) || (list[i].BookingDate<=booking.EndRepeatedDate && booking.EndRepeatedDate <= list[i].EndRepeatedDate))
+                            if ((list[i].EndRepeatedDate>booking.BookingDate && list[i].EndRepeatedDate < booking.EndRepeatedDate) || 
+                                (list[i].BookingDate>booking.BookingDate && list[i].BookingDate < booking.EndRepeatedDate) ||
+                                (list[i].BookingDate <= booking.BookingDate && list[i].EndRepeatedDate >= booking.EndRepeatedDate))
                             {
 
 
@@ -169,11 +161,8 @@ namespace MMSService
                                 var ans = (int)InputdaysFlag & (int)(existday ?? 0);
                                 if (ans != 0) {
                                 
-                                    if (list[i].StartTime==booking.StartTime && list[i].EndTime == booking.EndTime)
-                                    {
-                                        return false;
-                                    }
-                                    else if (list[i].EndTime>booking.StartTime && list[i].EndTime < booking.EndTime)
+                               
+                                    if (list[i].EndTime>booking.StartTime && list[i].EndTime < booking.EndTime)
                                     {
                                         return false;
                                     }
@@ -181,7 +170,7 @@ namespace MMSService
                                     {
                                         return false;
                                     }
-                                    else if (list[i].StartTime<booking.StartTime && list[i].EndTime> booking.EndTime) {
+                                    else if (list[i].StartTime<=booking.StartTime && list[i].EndTime>= booking.EndTime) {
                                        return false;
                                     }
 
@@ -195,13 +184,149 @@ namespace MMSService
           // Weekly Option false
             else if (booking.RepetitionOption == RepeatOption.Weekly && booking.EndRepeatedDate.HasValue)
             {
-                return !await existingBookings.AnyAsync(x =>
+                var state= !await existingBookings.AnyAsync(x =>
                     x.RepetitionOption == RepeatOption.Weekly &&
                     x.BookingDate <= booking.BookingDate &&
                     x.EndRepeatedDate >= booking.BookingDate &&
                     (x.DaysToRepeatedOn & booking.DaysToRepeatedOn) != 0 && 
                     x.StartTime < booking.EndTime &&
                     x.EndTime > booking.StartTime);
+                if (state == false)
+                {
+                    return false;
+                }
+                else
+                {
+                    var list = existingBookings.ToList();
+                    for(int i=0; i<list.Count; i++)
+                    {
+                        if (list[i].RepetitionOption == RepeatOption.NoRepeat)
+                        {
+                            if (booking.BookingDate <= list[i].BookingDate && list[i].BookingDate <= booking.EndRepeatedDate)
+                            {
+                                var existday = (DaysofworkEnum)(1 << (int)list[i].BookingDate.DayOfWeek);
+                                var inputday = list[i].DaysToRepeatedOn;
+                                var ans = ((int?)inputday ?? 0) & (int)existday;
+                                if (ans != 0)
+                                {
+                                    if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+
+                                }
+
+                            }
+                           
+                        }
+                        else if (list[i].RepetitionOption == RepeatOption.Daily)
+                        {
+                            
+                            if(list[i].BookingDate <= booking.BookingDate && list[i].EndRepeatedDate >= booking.EndRepeatedDate)
+                            {
+                                DaysofworkEnum exitday = DaysofworkEnum.None; // Initial empty flag
+
+                                for (DateTime date = booking.BookingDate; date <= booking.EndRepeatedDate; date = date.AddDays(1))
+                                {
+                                    var dayEnum = (DaysofworkEnum)(1 << (int)date.DayOfWeek);
+                                    exitday |= dayEnum; // Add to the flag using bitwise OR
+
+                                }
+                                var inputday = list[i].DaysToRepeatedOn;
+                                var ans = ((int?)inputday ?? 0) & (int)exitday;
+                                if (ans != 0)
+                                {
+                                    if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+
+                                }
+
+
+                            }
+                            else if(list[i].BookingDate > booking.BookingDate && list[i].BookingDate < booking.EndRepeatedDate)
+                            {
+                                DaysofworkEnum exitday = DaysofworkEnum.None; // Initial empty flag
+
+                                for (DateTime date = list[i].BookingDate; date <= booking.EndRepeatedDate; date = date.AddDays(1))
+                                {
+                                    var dayEnum = (DaysofworkEnum)(1 << (int)date.DayOfWeek);
+                                    exitday |= dayEnum; // Add to the flag using bitwise OR
+                                   
+                                }
+                                var inputday = list[i].DaysToRepeatedOn;
+                                var ans = ((int?)inputday ?? 0) & (int)exitday;
+                                if (ans != 0)
+                                {
+                                    if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+
+                                }
+
+                            }
+                            else if (list[i].EndRepeatedDate > booking.BookingDate && list[i].EndRepeatedDate < booking.EndRepeatedDate)
+                            {
+                                DaysofworkEnum exitday = DaysofworkEnum.None; // Initial empty flag
+
+                                for (DateTime date = booking.BookingDate; date <= list[i].EndRepeatedDate; date = date.AddDays(1))
+                                {
+                                    var dayEnum = (DaysofworkEnum)(1 << (int)date.DayOfWeek);
+                                    exitday |= dayEnum; // Add to the flag using bitwise OR
+                                   
+                                }
+                                var inputday = list[i].DaysToRepeatedOn;
+                                var ans = ((int?)inputday ?? 0) & (int)exitday;
+                                if (ans != 0)
+                                {
+                                    if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime <= booking.StartTime && list[i].EndTime >= booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+
+                                }
+
+                            }
+
+
+                        }
+                     
+                    }
+                }
             }
             // Other Return  ture for added data
             return true; 
