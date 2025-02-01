@@ -10,6 +10,7 @@ namespace MMSCore
 {
     public class Booking:Entity
     {
+      
         [Required]
         public DateTime BookingDate { get; set; }
         [Required]
@@ -20,7 +21,7 @@ namespace MMSCore
         public RepeatOption RepetitionOption { get; set; } // "Day", "Week", "NoRepeat"
         public DateTime? EndRepeatedDate { get; set; }
         public DaysofworkEnum? DaysToRepeatedOn { get; set; } // Multiple values store. So enum used by [Flags]
-        public DateTime? RequestedOn { get; set; } = DateTime.Now;
+        public DateTime? RequestedOn { get; set; } 
         public string? Subject {  get; set; }
         public string? Host {  get; set; }
     }
