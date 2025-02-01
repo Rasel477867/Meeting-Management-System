@@ -2,15 +2,21 @@
 using Microsoft.AspNetCore.Mvc;
 using MMSCore;
 using MMSCore.Enum;
+using MMSCore.NotMap;
 using MMSWeb.Models;
 
 namespace MMSWeb.Controllers
 {
     public class BookingController : Controller
     {
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(BookingQuery bookingQuery, int page = 1)
         {
+            int pageSize = 4;
             var model = await Task.Run(() => new BookingModel());
+            var (bookings, totalCount) = await model.GetCategorysAsync(bookingQuery, page, pageSize);
+            model.Pagination = new Pagination(totalCount, page, pageSize);
+            model.Bookings = bookings.OrderBy(x=>x.BookingDate).ToList();   
+
             return View(model);
         }
         public async Task<IActionResult> Add()

@@ -12,5 +12,6 @@ namespace MMSRepository.Contacts
     {
         IQueryable<Booking> GetBookingListAsync();
         Task<List<Booking>> GetBookingList();
+
     }
 }

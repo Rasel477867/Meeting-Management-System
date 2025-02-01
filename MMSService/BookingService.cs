@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MMSCore;
 using MMSCore.Enum;
+using MMSCore.NotMap;
 using MMSRepository.Contacts;
 using MMSService.Contact;
 using System;
@@ -22,6 +23,24 @@ namespace MMSService
         {
            await _unitOfWork.BookingRepository.Add(Entity);
            return await _unitOfWork.CompleteAsync();
+        }
+
+        public async Task<(IEnumerable<Booking> bookings, int TotalCount)> GetBookingAsync(BookingQuery bookingQuery, int page, int pageSize)
+        {
+            int skip = (page - 1) * pageSize;
+
+
+            var query = _unitOfWork.BookingRepository.GetAllAsync();
+           
+            if (!string.IsNullOrEmpty(bookingQuery.SName))
+            {
+                query = query.Where(x => x.Host.Contains(bookingQuery.SName));
+            }
+            var bookings = await query.Skip(skip).Take(pageSize).ToListAsync();
+
+            var totalCount = await query.CountAsync();
+
+            return (bookings, totalCount);
         }
 
         public Task<List<Booking>> GetBookingList()

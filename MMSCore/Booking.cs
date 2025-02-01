@@ -20,7 +20,7 @@ namespace MMSCore
         public RepeatOption RepetitionOption { get; set; } // "Day", "Week", "NoRepeat"
         public DateTime? EndRepeatedDate { get; set; }
         public DaysofworkEnum? DaysToRepeatedOn { get; set; } // Multiple values store. So enum used by [Flags]
-        public DateTime? RequestedOn { get; set; }
+        public DateTime? RequestedOn { get; set; } = DateTime.Now;
         public string? Subject {  get; set; }
         public string? Host {  get; set; }
     }
