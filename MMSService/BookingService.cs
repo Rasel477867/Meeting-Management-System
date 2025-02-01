@@ -38,8 +38,10 @@ namespace MMSService
             {
                 var state=! await existingBookings.AnyAsync(x =>
                     x.BookingDate == booking.BookingDate &&
-                    ((x.StartTime <= booking.StartTime && booking.StartTime <= x.EndTime) ||
-                     (x.StartTime <= booking.EndTime && booking.EndTime <= x.EndTime))); // Check exact same time
+                    ((x.EndTime > booking.StartTime && x.EndTime < booking.EndTime) ||
+                     (x.StartTime > booking.StartTime && x.StartTime < booking.EndTime) ||
+                     (x.StartTime==booking.StartTime && x.EndTime==booking.EndTime)||
+                    (x.StartTime<booking.StartTime && x.EndTime>booking.EndTime))); // Check exact same time
                 if (state == false)
                 {
                     return false;
@@ -51,12 +53,20 @@ namespace MMSService
                         if (list[i].RepetitionOption == RepeatOption.Daily) {
                             if (list[i].BookingDate<=booking.BookingDate && booking.BookingDate <= list[i].EndRepeatedDate)
                             {
-                             
-                                if (list[i].StartTime<=booking.StartTime && booking.StartTime <= list[i].EndTime)
+
+                                if (list[i].StartTime == booking.StartTime && list[i].EndTime == booking.EndTime)
                                 {
                                     return false;
                                 }
-                                else if (list[i].StartTime <= booking.EndTime && booking.EndTime <= list[i].EndTime)
+                                else if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                {
+                                    return false;
+                                }
+                                else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                {
+                                    return false;
+                                }
+                                else if (list[i].StartTime < booking.StartTime && list[i].EndTime > booking.EndTime)
                                 {
                                     return false;
                                 }
@@ -72,11 +82,19 @@ namespace MMSService
                                 var ans = ((int?)existday ?? 0) & (int)inputday;
                                 if (ans != 0)
                                 {
-                                    if (list[i].StartTime <= booking.StartTime && booking.StartTime <= list[i].EndTime)
+                                    if (list[i].StartTime == booking.StartTime && list[i].EndTime == booking.EndTime)
                                     {
                                         return false;
                                     }
-                                    else if (list[i].StartTime <= booking.EndTime && booking.EndTime <= list[i].EndTime)
+                                    else if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime < booking.StartTime && list[i].EndTime > booking.EndTime)
                                     {
                                         return false;
                                     }
@@ -92,7 +110,7 @@ namespace MMSService
                 }
             }
             // Daily Book false
-            if (booking.RepetitionOption == RepeatOption.Daily && booking.EndRepeatedDate.HasValue)
+            else if (booking.RepetitionOption == RepeatOption.Daily && booking.EndRepeatedDate.HasValue)
             {
                 var state = !await existingBookings.AnyAsync(x =>
                     x.RepetitionOption == RepeatOption.Daily &&
@@ -109,16 +127,73 @@ namespace MMSService
                     var list=existingBookings.ToList();
                     for(int i=0; i<list.Count; i++)
                     {
+                        // Daily case exist NoRepeat option duplicate check
                         if (list[i].RepetitionOption == RepeatOption.NoRepeat)
                         {
 
+                            if (booking.BookingDate <= list[i].BookingDate && list[i].BookingDate <= booking.EndRepeatedDate)
+                            {
+                                if (list[i].StartTime == booking.StartTime && list[i].EndTime == booking.EndTime)
+                                {
+                                    return false;
+                                }
+                                else if (list[i].EndTime > booking.StartTime && list[i].EndTime < booking.EndTime)
+                                {
+                                    return false;
+                                }
+                                else if (list[i].StartTime > booking.StartTime && list[i].StartTime < booking.EndTime)
+                                {
+                                    return false;
+                                }
+                                else if (list[i].StartTime < booking.StartTime && list[i].EndTime > booking.EndTime)
+                                {
+                                    return false;
+                                }
+                            }
+
+                        }// Daily case exist weekly option duplicate check
+                        else if (list[i].RepetitionOption==RepeatOption.Weekly)
+                        {
+                            if ((list[i].BookingDate<=booking.BookingDate && booking.BookingDate <= list[i].EndRepeatedDate) || (list[i].BookingDate<=booking.EndRepeatedDate && booking.EndRepeatedDate <= list[i].EndRepeatedDate))
+                            {
+
+
+                                var existday = list[i].DaysToRepeatedOn;
+                                DaysofworkEnum InputdaysFlag = DaysofworkEnum.None; // Initial empty flag
+
+                                for (DateTime date = booking.BookingDate; date <= booking.EndRepeatedDate; date = date.AddDays(1))
+                                {
+                                    var dayEnum = (DaysofworkEnum)(1 << (int)date.DayOfWeek);
+                                    InputdaysFlag |= dayEnum; // Add to the flag using bitwise OR
+                                }
+                                var ans = (int)InputdaysFlag & (int)(existday ?? 0);
+                                if (ans != 0) {
+                                
+                                    if (list[i].StartTime==booking.StartTime && list[i].EndTime == booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].EndTime>booking.StartTime && list[i].EndTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime>booking.StartTime && list[i].StartTime < booking.EndTime)
+                                    {
+                                        return false;
+                                    }
+                                    else if (list[i].StartTime<booking.StartTime && list[i].EndTime> booking.EndTime) {
+                                       return false;
+                                    }
+
+                                }
+                            }
                         }
                     }
                 }
             }
 
           // Weekly Option false
-            if (booking.RepetitionOption == RepeatOption.Weekly && booking.EndRepeatedDate.HasValue)
+            else if (booking.RepetitionOption == RepeatOption.Weekly && booking.EndRepeatedDate.HasValue)
             {
                 return !await existingBookings.AnyAsync(x =>
                     x.RepetitionOption == RepeatOption.Weekly &&
