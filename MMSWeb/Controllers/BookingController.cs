@@ -46,15 +46,17 @@ namespace MMSWeb.Controllers
                 if (state)
                 {
                     TempData["SuccessNotify"] = "Booking Add Successfully";
+                    return RedirectToAction("Index");
                 }
                 else
                 {
                     TempData["InfoNotify"] = "All Ready Book this Slot";
+                    return RedirectToAction("Add");
                 }
-                return RedirectToAction("Add");
+              
 
             }
-            return RedirectToAction("Add");
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public async Task<IActionResult> GetBookings()

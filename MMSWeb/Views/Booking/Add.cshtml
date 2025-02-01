@@ -123,10 +123,14 @@
         // select2 load //
         $(".select2").select2();
         $(document).ready(function () {
-            // Show/Hide days checkboxes based on RepetitionOption
+            var today = new Date().toISOString().split('T')[0]; // Get today's date in yyyy-MM-dd format
+            $("#bookingDate").val(today); // Set default value
+           
+     
             $("#repetitionOption").change(function () {
                 if ($(this).val() === "3") {
                     $("#daysCheckboxes").show();
+                   
                    
                 }
                 else {
@@ -134,16 +138,16 @@
                 }
                 if ($(this).val() === "3" || $(this).val()=="2") {
                     $("#endDate").show();
+                    $("#endingDate").val(today); // Set default value
 
                 }
                 else {
                     $("#endDate").hide();
+                    $("#endingDate").val(null); 
                 }
                 
             });
-            var today = new Date().toISOString().split('T')[0]; // Get today's date in yyyy-MM-dd format
-            $("#bookingDate").val(today); // Set default value
-            $("#endingDate").val(today); // Set default value
+ 
             
         });
        

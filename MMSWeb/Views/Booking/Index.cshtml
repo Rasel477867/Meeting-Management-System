@@ -5,7 +5,6 @@
     
 }
 
-
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-body">
@@ -29,8 +28,10 @@
                                                         <th>Host</th>
                                                         <th>Subject</th>
                                                         <th>Booking Type</th>
-                                                        
-                                                       
+                                                        <th>Booking Date</th>
+                                                        <th>Start Time</th>
+                                                        <th>End Time</th>
+                                                        <th>Ending Date</th>
                                                      
                                                     </tr>
                                                 </thead>
@@ -44,6 +45,18 @@
                                                                 <td>@booking.Host</td>
                                                                 <td>@booking.Subject</td>
                                                                 <td>@booking.RepetitionOption</td>
+                                                                <td>@booking.BookingDate.ToString("yyyy-MM-dd")</td>
+                                                                <td>@booking.StartTime</td>
+                                                                <td>@booking.EndTime</td>
+                                                                @if(booking.EndRepeatedDate != null)
+                                                                {
+                                                                    <td>@booking.EndRepeatedDate.Value.ToString("yyyy-MM-dd")</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td>-----</td>
+                                                                }
+
                                                             </tr>
                                                       
                                                         }
