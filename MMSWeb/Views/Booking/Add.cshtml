@@ -34,14 +34,21 @@
                                             <label class="required">Start Time:</label>
                                             <input type="time" asp-for="StartTime" class="form-control form-control-medium" required>
                                         </div>
-                                        <div class="form-group mt-1" id="endDate" style="display: none;">
+                                   @*      <div class="form-group mt-1" id="endDate" style="display: none;">
                                             <label asp-for="EndRepeatedDate"></label>
                                             <div class="input-group">
                                                 <input required type="date" asp-for="EndRepeatedDate" class="form-control form-control-medium bs-datepicker">
                                             </div>
                                             <span class="text-danger" asp-validation-for="EndRepeatedDate"></span>
+                                        </div> *@
+                                        <div class="form-group mt-1" id="endDate" style="display: none">
+                                            <label asp-for="EndRepeatedDate"></label>
+                                            <div class="input-group">
+                                                <input type="date" asp-for="EndRepeatedDate" class="form-control form-control-medium bs-datepicker"
+                                                       id="endingDate" min="@DateTime.Now.ToString("yyyy-MM-dd")">
+                                            </div>
+                                            <span class="text-danger" asp-validation-for="EndRepeatedDate"></span>
                                         </div>
-
 
                                     </div>
                                     <div class="col-md-4 mt-1">
@@ -49,11 +56,11 @@
                                         <div class="form-group mt-1">
                                             <label asp-for="BookingDate"></label>
                                             <div class="input-group">
-                                                <input type="date" asp-for="BookingDate" class="form-control form-control-medium bs-datepicker" )">
+                                                <input type="date" asp-for="BookingDate" class="form-control form-control-medium bs-datepicker"
+                                                       id="bookingDate" min="@DateTime.Now.ToString("yyyy-MM-dd")">
                                             </div>
                                             <span class="text-danger" asp-validation-for="BookingDate"></span>
                                         </div>
-
 
                                         <div class="form-group mt-1">
                                             <label class="required">Ending Time:</label>
@@ -134,9 +141,12 @@
                 }
                 
             });
-
+            var today = new Date().toISOString().split('T')[0]; // Get today's date in yyyy-MM-dd format
+            $("#bookingDate").val(today); // Set default value
+            $("#endingDate").val(today); // Set default value
             
         });
+       
     </script>
 }
 
