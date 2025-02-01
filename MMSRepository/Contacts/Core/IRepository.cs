@@ -13,6 +13,7 @@ namespace MMSRepository.Contacts.Core
         Task Update(T Entity);
         Task Delete(T Entity);
         Task Add(T Entity);
+        IQueryable<T> GetAllAsync();
 
 
     }

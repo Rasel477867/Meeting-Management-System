@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components.QuickGrid;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MMSCore;
 using MMSCore.Enum;
+using MMSCore.NotMap;
 using MMSService.Contact;
 
 namespace MMSWeb.Models
@@ -13,7 +14,9 @@ namespace MMSWeb.Models
         private readonly IBookingService _bookingService;
         public SelectList? SelectRepeatItems { get; set; }
         public DaysofworkEnum SelectedDays { get; set; } // Enum Value for Days
-
+        public Pagination? Pagination { get; set; }
+        public BookingQuery? BookingQuery { get; set; }
+        public IEnumerable<Booking>? Bookings { get; set; }
         public BookingModel()
         {
            _bookingService=Startup.AutofacContainer.Resolve<IBookingService>();
@@ -95,6 +98,10 @@ namespace MMSWeb.Models
                 }
             }
             return events;
+        }
+        public async Task<(IEnumerable<Booking> bookings, int TotalCount)> GetCategorysAsync(BookingQuery bookingQuery, int page, int pageSize)
+        {
+            return await _bookingService.GetBookingAsync(bookingQuery, page, pageSize);
         }
 
     }

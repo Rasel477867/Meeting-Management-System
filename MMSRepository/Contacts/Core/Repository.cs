@@ -64,5 +64,10 @@ namespace MMSRepository.Contacts.Core
             });
 
         }
+        public IQueryable<T> GetAllAsync()
+        {
+            return table.AsQueryable();
+        }
+
     }
 }
