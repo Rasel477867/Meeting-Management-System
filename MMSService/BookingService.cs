@@ -224,7 +224,7 @@ namespace MMSService
                             if (booking.BookingDate <= list[i].BookingDate && list[i].BookingDate <= booking.EndRepeatedDate)
                             {
                                 var existday = (DaysofworkEnum)(1 << (int)list[i].BookingDate.DayOfWeek);
-                                var inputday = list[i].DaysToRepeatedOn;
+                                var inputday = booking.DaysToRepeatedOn;
                                 var ans = ((int?)inputday ?? 0) & (int)existday;
                                 if (ans != 0)
                                 {
@@ -259,7 +259,7 @@ namespace MMSService
                                     exitday |= dayEnum; // Add to the flag using bitwise OR
 
                                 }
-                                var inputday = list[i].DaysToRepeatedOn;
+                                var inputday =booking.DaysToRepeatedOn;
                                 var ans = ((int?)inputday ?? 0) & (int)exitday;
                                 if (ans != 0)
                                 {
